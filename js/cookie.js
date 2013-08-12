@@ -1,0 +1,36 @@
+var Cookie = Cookie || {};
+
+(function(Cookie) {
+	Cookie.set = function(name, value, daysToExpire) {
+		var expire = '';
+		var path = '; path=/';
+		if(daysToExpire != undefined) {
+			var d = new Date();
+			d.setTime(d.getTime() + (86400000 * parseFloat(daysToExpire)));
+			expire = '; expires=' + d.toGMTString();
+		}
+		return (document.cookie = encodeURI(name) + '=' + encodeURI(value || '') + expire + path);
+	};
+
+	Cookie.get = function(name) {
+		var cookie = document.cookie.match(new RegExp('(^|;)\\s*' + encodeURI(name) + '=([^;\\s]*)'));
+		return (cookie ? decodeURI(cookie[2]) : null);
+	};
+
+	Cookie.erase = function(name) {
+		var cookie = Cookie.get(name) || true;
+		Cookie.set(name, '', -1);
+		return cookie;
+	};
+
+	Cookie.accept = function() {
+		if(typeof navigator.cookieEnabled == 'boolean') {
+			return navigator.cookieEnabled;
+		}
+
+		Cookie.set('_test', '1');
+		return (Cookie.erase('_test') === '1');
+	};
+
+	return Cookie;
+})(Cookie);
