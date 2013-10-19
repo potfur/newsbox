@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="./css/normalize.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="./css/newsbox.css" type="text/css" media="screen">
+
+	<script type="text/javascript" src="./js/ajax.js"></script>
+
+	<script type="text/javascript" src="./js/event.js"></script>
+	<script type="text/javascript" src="./js/dom.js"></script>
+	<script type="text/javascript" src="./js/pe.js"></script>
+	<script type="text/javascript" src="./js/storage.js"></script>
+	<script type="text/javascript" src="./js/cookie.js"></script>
+	<script type="text/javascript" src="./js/profile.js"></script>
+
+	<script type="text/javascript" src="./js/treemap.js"></script>
+	<script type="text/javascript" src="./js/treemap.container.js"></script>
+	<script type="text/javascript" src="./js/treemap.entry.js"></script>
+	<script type="text/javascript" src="./js/treemap.advert.js"></script>
+	<script type="text/javascript" src="./js/treemap.desc.js"></script>
+
+	<script type="text/javascript" src="./js/newsbox.js"></script>
+
+	<script type="text/javascript">
+		// sample json structure used by newsbox
+		var json = {
+			"messages": [
+				'Sample error text from json'
+			],
+			"feeds": [
+				{
+					"type": "category",
+					"title": "Category 1", // category container title
+					"weight": 1990, // all children weights summed
+					"color": null, // unused
+					"content": [
+						{
+							"type": "entry",
+							"guid": "1", // identifier, can use feed guids
+							"pubdate": "1382166004", // unused
+							"link": "http:\/\/domain.com\/1\/", // link to article
+							"title": "Entry 1.1", // title
+							"text": "Entry 1.1 lorem ipsum dolor omet", // description
+							"image": "", // optional imave
+							"weight": 1001 // weight
+						},
+						{
+							"type": "entry",
+							"guid": "2",
+							"pubdate": "1382165284",
+							"link": "http:\/\/domain.com\/1\/",
+							"title": "Entry 1.1",
+							"text": "Entry 1.2 lorem ipsum dolor imet",
+							"image": "",
+							"weight": 989
+						}
+					]},
+				{
+					"type": "category",
+					"title": "Category 2",
+					"weight": 1729,
+					"color": null,
+					"content": [
+						{
+							"type": "entry",
+							"guid": "3",
+							"pubdate": "1382162904",
+							"link": "http:\/\/some.lnk",
+							"title": "Entry 2.3 with html body",
+							"text": "<h3>Entry 2.3 HTML text<\/h3><p>lorem ipsum dolor omet<\/p>",
+							"image": "\/\/t1.gstatic.com\/images?q=tbn:ANd9GcR2LktVo_IUdbcAVv8LtLQC5DPHMxruON5fKpz_0l38lTODG2jsuH_VoQ8",
+							"weight": 943
+						},
+						{
+							"type": "entry",
+							"guid": "4",
+							"pubdate": "1382103979",
+							"link": "http:\/\/news.google.com\/news\/url?sa=t&fd=R&usg=AFQjCNEBstA3wBReiAopegOo5-QqRuXh1w&url=http:\/\/www.polskieradio.pl\/5\/3\/Artykul\/959092,Angela-Merkel-na-czele-wloskiego-rzadu-O-tym-marza-Wlosi",
+							"title": "Angela Merkel na czele w\u0142oskiego rz\u0105du? O tym marz\u0105 W\u0142osi - Polskie Radio", "text": "Money.plAngela Merkel na czele w\u0142oskiego rz\u0105du? O tym marz\u0105 W\u0142osiPolskie RadioPonad dwie trzecie W\u0142och\u00f3w chcia\u0142oby, by niemiecka kanclerz Angela Merkel stan\u0119\u0142a na czele ich rz\u0105du. Czym dok\u0142adnie uwiod\u0142a W\u0142och\u00f3w Niemka - nie wiadomo. Tylko cztery procent W\u0142och\u00f3w ufa swoim krajowym partiom. Du\u017co bardziej odpowiadaj\u0105 im&nbsp;...W\u0142osi chc\u0105, by rz\u0105dzi\u0142a nimi Angela MerkelDziennik.plW\u0142osi chc\u0105, by Merkel by\u0142a ich premieremMoney.plNie uwierzysz - to jej pragn\u0105 W\u0142osiWirtualna PolskaInwest[..]",
+							"image": "\/\/t2.gstatic.com\/images?q=tbn:ANd9GcSbauQshKJ-UumwIqhrzdTOTAMEgpK8vFHIIioXqkUfzSviS8aZklmBAmgz",
+							"weight": 786
+						}
+					]}
+			]};
+
+		var NB;
+		document.addEventListener('dom:loaded', function() {
+			try {
+				NB = new Newsbox({
+					container: 'section',
+					loader: '#loader',
+					messenger: '#messenger',
+					profile: 'header > nav > a:nth-child(1)',
+					clearcache: 'header > nav > a:nth-child(2)'
+				});
+
+				NB.message('error', 'Uses local storage for buffering'); // error message
+				NB.message('info', 'Uses cookies to store personalization settings'); // info message
+				NB.message('log', 'And works... '); // log message
+				NB.bridge('http://bridge.com/aggregate/feeds');
+//				NB.load(); // loads data from bridge
+				NB.read(json); // loads data from passed json
+			}
+			catch(e) {
+				console.error(e);
+				e.stack ? console.log(e.stack) : null;
+			}
+		});
+	</script>
+</head>
+<body>
+
+<header>
+	<h1>
+		<a href="#" title="Newsbox 0.4.1" id="top">
+			Newsbox sample HTML
+		</a>
+	</h1>
+
+	<nav>
+		<a href="#">Personalize</a>
+		<a href="#">Refresh</a>
+	</nav>
+
+	<div id="loader"></div>
+</header>
+
+<section id="content" data-bridge="http://bridge.com/aggregate/feeds">
+</section>
+
+<section id="messenger">
+</section>
+
+<footer>
+	<strong>2012-2013 &copy; <a href="http://mwachowski.pl">Michał Wachowski</a></strong>
+</footer>
+
+</body>
+</html>
