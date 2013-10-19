@@ -212,7 +212,8 @@ var Treemap = Treemap || {};
 		clear(container);
 
 		splitTreeMap(items, 0, 0, options.width, options.height);
-		buildTreeMap(options.container, items, builders);
+
+		buildTreeMap(options.container, items);
 
 		Event.fire('loader:stop');
 
