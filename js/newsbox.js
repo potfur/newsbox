@@ -86,6 +86,9 @@ var Newsbox = (function() {
 			}
 		};
 
+	/**
+	 * Loads data from bridge
+	 */
 	function load() {
 		new Ajax.Request(bridgeUri, {
 			method: 'post',
@@ -126,6 +129,28 @@ var Newsbox = (function() {
 				Event.fire('loader:stop');
 			}
 		});
+	}
+
+	/**
+	 * Loads data from passed JSON
+	 */
+	function read(json) {
+		Event.fire('loader:start');
+		if(!json || !json.feeds.length) {
+			Event.fire('source:failed');
+			Event.fire('message:error', 'Unable to read JSON: ' + json);
+
+			return;
+		}
+
+		for(var i = 0; i < json.messages.length; i++) {
+			Event.fire('message:error', json.messages[i]);
+		}
+
+		Storage.store('json', json.feeds);
+		Event.fire('source:loaded');
+		Event.fire('loader:stop');
+
 	}
 
 	/**
@@ -213,6 +238,15 @@ var Newsbox = (function() {
 	Newsbox.prototype.reload = function() {
 		Storage.clear();
 		load();
+
+		return this;
+	};
+
+	/**
+	 * Reads data from passed json and draws tree map
+	 */
+	Newsbox.prototype.read = function(json) {
+		read(json);
 
 		return this;
 	};
