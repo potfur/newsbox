@@ -1,0 +1,98 @@
+html, body { height: 100%; font: medium/1.75em Helvetica, Helvetica Neue, Arial, sans-serif; background: url('../img/bg.png') #000; color: #444; }
+
+a { outline: none; text-decoration: none; color: #fff; cursor: pointer; }
+
+body > header { position: fixed; top: 0; left: 0; right: 0; height: 2em; padding: 0.25em 1em 0; font-size: 1em; border-bottom: 0.2em solid #444; }
+	body > header > h1 { position: absolute; display: block; top: 0.5em; right: 1em; margin: 0; font-size: 1em; line-height: 1.75em; }
+
+body > footer { position: fixed; bottom: 0; left: 0; right: 0; height: 2.2em; padding: 0.25em 1em 0; font-size: small; border-top: 0.2em solid #444; }
+
+body > header, body > footer { font-weight: bold; color: #aaa; background: #222; z-index: 4; }
+	body > header a, body > header a:visited, body > footer a, body > footer a:visited { color: #fff; }
+		body > header a img, body > footer a img { max-height: 1em; max-width: 1em; }
+
+body > nav { position: absolute; display: block; left: 10%; top: 10%; margin: 0; color: #444; background: #fff; z-index: 3; }
+	body > nav a, body > nav a:visited { display: inline-block; margin: 0 1em; line-height: 2.4em; color: #fff; opacity: 0.5; }
+
+#loader { position: absolute; display: block; top: 0; left: 0; width: 100%; height: 2.25em; background: url('../img/grid.png'); z-index: 5; }
+
+body > section#content { position: fixed; display: block; top: 2.4em; bottom: 2em; width: 100%; margin: 0 auto; z-index: 1; }
+
+	body > section#content section h1 { position: absolute; display: none; top: -2.25em; left: -0.25em; margin: 0; padding: 0.25em 0.75em; font-size: 1em; color: #652; text-shadow: 0 0 0.1em #EC5; background: #ed9; }
+	body > section#content section:hover { display: block; margin: -0.25em 0 0 -0.25em; border: 0.25em solid #ed9; box-shadow: 0 0 1em #000; z-index: 10; }
+	body > section#content section:hover h1 { display: block; }
+
+	body > section#content section:nth-child(1) { background: #02C1FF; }
+	body > section#content section:nth-child(2) { background: #9C1F1F; }
+	body > section#content section:nth-child(3) { background: #9C891F; }
+	body > section#content section:nth-child(4) { background: #449C1F; }
+	body > section#content section:nth-child(5) { background: #9bc852; }
+	body > section#content section:nth-child(6) { background: #1F689C; }
+	body > section#content section:nth-child(7) { background: #421F9C; }
+	body > section#content section:nth-child(8) { background: #9C1F8B; }
+	body > section#content section:nth-child(9) { background: #FFB400; }
+	body > section#content section:nth-child(10) { background: #F63131; }
+
+	body > section#content section > article { position: absolute; display: block; top: 0; left: 0; cursor: pointer; }
+		body > section#content section > article > h2 { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: 5px; font-size: 1em; font-weight: normal; line-height: 1.0em; text-align: left; vertical-align: middle; color: #fff; text-shadow: 0 0 0.1em #000; overflow: hidden; }
+
+	body > section#content section > article > div { position: absolute; display: block; visibility: hidden; top: 30px; left: 20px; width: 40em; min-height: 5em; padding: 0.5em 1em; text-align: left; font-size: medium; line-height: 1.5em; color: #444; background: #fff; box-shadow: 0 0 1em #000; z-index: 20; cursor: default; }
+		body > section#content section > article > div:before { content: '.'; position: absolute; display: block; width: 20px; height: 20px; color: transparent; background: url('../img/arrow.png') no-repeat; }
+			body > section#content section > article > div.left.top:before { top: 10px; left: -20px; background-position: 0 0; }
+			body > section#content section > article > div.left.bottom:before { bottom: 10px; left: -20px; background-position: 0 0; }
+			body > section#content section > article > div.right.top:before { top: 10px; right: -20px; background-position: -20px 0; }
+			body > section#content section > article > div.right.bottom:before { bottom: 10px; right: -20px; background-position: -20px 0; }
+
+		body > section#content section > article > div > h3 { margin: 0.25em 3em 0.5em 0; }
+		body > section#content section > article > div > h3 a, body > section#content section > article > div > h3 a:visited { color: #000; }
+
+		body > section#content section > article > div > a.img { position: relative; display: block; float: left; margin: 1em 1em 1em 0; }
+		body > section#content section > article > div > a.img img { max-width: 100px; max-height: 100px; }
+		body > section#content section > article > div > a.close { position: absolute; display: block; top: 0; right: 0; width: 48px; height: 48px; background: url('../img/close.png') no-repeat right -10px transparent; }
+
+		body > section#content section > article > div > p { display: block; margin: 0; padding: 0; }
+		body > section#content section > article > div > p a:hover { border-bottom: 1px dotted #000; }
+
+		body > section#content section > article > div > ul { display: block; padding: 0; list-style: none; font-size: 0.8em; }
+			body > section#content section > article > div > ul > li { display: inline-block; padding: 0 0.5em; }
+			body > section#content section > article > div > ul > li a, body > section#content section > article > div > ul > li a:visited { color: #0ac; }
+			body > section#content section > article > div > ul > li:nth-child(n+2) { margin-left: 0; border-left: 1px solid #ccc; }
+			body > section#content section > article > div > ul > li:nth-child(2) { color: #d00; }
+			body > section#content section > article > div > ul > li:nth-child(3) { color: #000; }
+
+body > section#messenger { position: fixed; top: 3em; z-index: 10; }
+	body > section#messenger > article.message { position: relative; width: 20em; margin: 0 0 0.5em; padding: 0.25em 0.4em; font-size: 1em; line-height: 1em; background: url('../img/close.png') no-repeat right -10px #ed9; border: 0.1em solid #b82; z-index: 9; cursor: pointer; }
+		body > section#messenger > article.message p { padding: 0; font-size: 1em; font-weight: normal; line-height: 1.1em; text-align: left; vertical-align: middle; color: #652; text-shadow: 0 0 0.1em #EC5; overflow: hidden; }
+
+	body > section#messenger > article.message.error { background: url('../img/close.png') no-repeat right -10px #d00; border: 0.1em solid #f00; }
+		body > section#messenger > article.message.error p { color: #fff; text-shadow: 0 0 0.1em #eee; }
+
+body > section#account { display: none; background: rgba(0, 0, 0, 0.75); z-index: 8; }
+	body > section#account.visible { display: block; }
+
+	body > section#account > article { position: relative; margin: 1em auto 0; width: 42em; padding: 1em 1em 0; background: #fff; border: 0.1em solid #555; overflow: hidden; z-index: 10; }
+		body > section#account > article h2 { padding: 0.25em 1em 0; margin: 0; font-size: 2em; color: #222; text-shadow: none; }
+		body > section#account > article p { margin: 0; padding: 0.25em 2em; font-size: 1em; line-height: 1.25em; color: #777; }
+
+		body > section#account input[type=submit] { position: relative; width: 48px; height: 48px; font-size: 0; background: url('../img/check.png') no-repeat right 0 #fff; border: none; }
+			body > section#account input[type=submit]:active, body > section#account input[type=submit]:hover { box-shadow: none; }
+
+		body > section#account input[name*=close] { position: absolute; top: 0; right: 0; width: 48px; height: 48px; font-size: 0; background: url('../img/close.png') no-repeat right -10px #fff; border: none; }
+			body > section#account input[name*=close]:active, body > section#account input[name*=close]:hover { box-shadow: none; }
+
+
+form { position: fixed; display: block; top: 2.4em; bottom: 2em; width: 100%; margin: 0 auto; padding: 0; background: rgba(0, 0, 0, 0.8); z-index: 1; }
+form ul { width: 42em; margin: 1em auto; padding: 0.75em; list-style: none; text-align: center; font-size: 1.5em; background: #fff; }
+form ul li { margin: 0.5em 0; }
+form label { display: inline-block; margin: 0 1em 1em 0; text-align: right; }
+
+input { position: relative; min-height: 1.5em; min-width: 40em; line-height: 1.5em; background: #fff; border: 1px solid #bbb; border-radius: 0.25em; }
+input:hover { border: 1px solid #0ae; }
+input:focus { border: 1px solid #0ae; box-shadow: 0 0 5px #0ae; }
+input[value=""] { opacity: 0.5; }
+input[value] { opacity: 1; }
+
+input[type=button], input[type=submit] { display: inline-block; min-width: inherit; min-height: inherit; width: 48px; height: 48px; margin: 0 2em; color: transparent; border: none; opacity: 0.5; }
+input[type=button]:hover, input[type=submit]:hover { opacity: 1 }
+input[type=button] { background: url('../img/close.png') no-repeat right #fff; }
+input[type=submit] { background: url('../img/check.png') no-repeat right #fff; }
