@@ -19,12 +19,12 @@ Send messages to view
 	NB.message('info', 'Info message');
 	NB.message('log', 'Log message');
 
-To load data from bridge (something that reads data from external sources)
-Data from bridge are cached in local storage, so if bridge is unavailable in further requests - stored dada is used.
+To load data from bridge (something that reads data from external sources).
 
 	NB.bridge('http://bridge.com/aggregate/feeds');
 	NB.load();
 
+Data from bridge are cached in local storage, so if bridge is unavailable in further requests - stored data will be used.
 To clear local storage and refresh bridge data
 
 	NB.reload();
