@@ -25,6 +25,7 @@ To load data from bridge (something that reads data from external sources).
 	NB.load();
 
 Data from bridge are cached in local storage, so if bridge is unavailable in further requests - stored data will be used.
+
 To clear local storage and refresh bridge data
 
 	NB.reload();
